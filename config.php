@@ -12,5 +12,5 @@
 	$conn = mysqli_connect($host, $database_user, $database_pass, $database_name);
 
 	// Google Maps API key
-	$google_key = ' AIzaSyAjXp5e_Anijx03JpoxUji3mT0lqbl69nU';
+	$google_key = 'AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is';
 ?>
