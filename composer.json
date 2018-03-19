@@ -1,8 +1,7 @@
 {
   "scripts": {
     "compile": [
-      "chown nginx:nginx -R files/",
-      "chmod 755 files/"
+      "chmod 0777 -R files/"
     ]
   }
 }
