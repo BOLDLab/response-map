@@ -1,7 +1,14 @@
 {
+  "name": "uon/response-map",
+  "description": "response map",
+  "license": "MIT",
   "scripts": {
     "compile": [
-      "chmod 777 files"
+      "chmod 700 files"
     ]
+  },
+  "require": {
+          "php": ">=5.6.0",
+          "ext-gd" : ">=2.2.0"
   }
 }
