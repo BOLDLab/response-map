@@ -2,10 +2,10 @@
 	// Rename this file to config.php and enter in your MySQL database credentials
 
 	// MySQL database credentials
-	$host = 'bfjrxdpxrza9qllq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-	$database_name = 'e3qkwax2j2r8u5zc';
-	$database_user = 'g7dk6fe86toueyoq';
-	$database_pass = 'lfusckc1l521pmff';
+	$host = 'iwqrvsv8e5fz4uni.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+	$database_name = 'ee4r54etwrtw7ilw';
+	$database_user = 'dllphy9r18z7gdgl';
+	$database_pass = 'qf2r9wfczyu2ezwy';
 	$adminpassword = 'ctlBOLD#nhi';
 
 	// Establish a connection to the database
