@@ -3,7 +3,7 @@
 
 	// MySQL database credentials
 	$host = 'bfjrxdpxrza9qllq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-	$database_name = 'response_map';
+	$database_name = 'e3qkwax2j2r8u5zc';
 	$database_user = 'g7dk6fe86toueyoq';
 	$database_pass = 'lfusckc1l521pmff';
 	$adminpassword = 'ctlBOLD#nhi';
