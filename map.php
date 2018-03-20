@@ -71,7 +71,7 @@
 		<link rel="stylesheet" href="css/response-map.css"/>
 		<meta charset="utf-8" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.32&key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is"></script>
 		<script src="js/markerclusterer.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
