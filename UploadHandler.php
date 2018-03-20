@@ -354,12 +354,6 @@ class UploadHandler
 	}
 
 	protected function validate($uploaded_file, $file, $error, $index) {
-		//($uploaded_file);
-		//console.log($file);
-		echo "AAAA";
-		var_dump($uploaded_file);
-		var_dump($file);
-		echo "-----";
 		if ($error) {
 			$file->error = $this->get_error_message($error);
 			return false;
