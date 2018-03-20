@@ -2,7 +2,7 @@
 	// Rename this file to config.php and enter in your MySQL database credentials
 
 	// MySQL database credentials
-	$host = 'iwqrvsv8e5fz4uni.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+		$host = 'iwqrvsv8e5fz4uni.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
 	$database_name = 'ee4r54etwrtw7ilw';
 	$database_user = 'dllphy9r18z7gdgl';
 	$database_pass = 'qf2r9wfczyu2ezwy';
@@ -14,5 +14,5 @@
 	// Google Maps API key
 	$google_key = 'AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is';
 
-	header('Access-Control-Allow-Origin: *');
+	//header('Access-Control-Allow-Origin: *');
 ?>
