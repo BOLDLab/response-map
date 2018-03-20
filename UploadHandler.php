@@ -247,7 +247,7 @@ class UploadHandler
 			}
 			$version_path = rawurlencode($version).'/';
 		}
-		return $this->option['nhi_url'].$this->get_user_path()
+		return $this->options['nhi_url'].$this->get_user_path()
 			.$version_path.rawurlencode($file_name);
 		//return $this->options['upload_url'].$this->get_user_path()
 			//.$version_path.rawurlencode($file_name);
