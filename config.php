@@ -13,4 +13,6 @@
 
 	// Google Maps API key
 	$google_key = 'AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is';
+
+	header('Access-Control-Allow-Origin', 'https://*.edx.org');
 ?>
