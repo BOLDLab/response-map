@@ -184,6 +184,8 @@ class UploadHandler
 	}
 
 	protected function get_full_url() {
+		echo ">>>>>>>>>>>>>>";
+		echo $_SERVER['HTTPS'];
 		$https = !empty($_SERVER['HTTPS']) && strcasecmp($_SERVER['HTTPS'], 'on') === 0;
 		return
 			($https ? 'https://' : 'http://').
@@ -1105,7 +1107,7 @@ class UploadHandler
 	protected function body($str) {
 		echo $str;
 	}
-	
+
 	protected function header($str) {
 		header($str);
 	}
