@@ -357,8 +357,8 @@ class UploadHandler
 		//($uploaded_file);
 		//console.log($file);
 		echo "AAAA";
-		echo $uploaded_file;
-		echo $file;
+		var_dump($uploaded_file);
+		var_dump($file);
 		echo "-----";
 		if ($error) {
 			$file->error = $this->get_error_message($error);
