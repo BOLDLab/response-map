@@ -8,7 +8,7 @@ $path = explode('/',$f);
 $fn = array_pop($path);
 echo count($path).'<br>';
 
-$f = (count($path === 0)) ? $fn : $f;
+$f = (count($path) === 0) ? $fn : $f;
 
 echo $f;
 return;
