@@ -5,16 +5,16 @@
 		echo 'Failed to connect to question database: ' . mysqli_connect_error();
 		die();
 	}
-	
+
 	$location = $_POST['user_location'];
-	
-	$geocode = JSON_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($location) . "&sensor=false&key=" . $google_key));
+
+	$geocode = JSON_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is&address=" . urlencode($location) . "&sensor=false&key=" . $google_key));
 	if ($geocode->status === 'OK') {
 		$lat = $geocode->results[0]->geometry->location->lat;
-		$lng = $geocode->results[0]->geometry->location->lng;
-		
+		$lng = $geocode->results[0]->geometry->location->lng;AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is&
+
 		$user_id = $_POST['user_id'];
-		$update_response_query = mysqli_query($conn, 'UPDATE user SET location="'.$location.'",lat='.$lat.',lng='.$lng.' WHERE user_id="'.$user_id.'" LIMIT 1');		
+		$update_response_query = mysqli_query($conn, 'UPDATE user SET location="'.$location.'",lat='.$lat.',lng='.$lng.' WHERE user_id="'.$user_id.'" LIMIT 1');
 	}
 	$postvars = json_decode($_POST['postvars']);
 ?>
@@ -35,4 +35,3 @@ document.redirect_frm.submit();
 </script>
 </body>
 </html>
-
