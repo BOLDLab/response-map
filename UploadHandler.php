@@ -361,11 +361,11 @@ class UploadHandler
 		$content_length = $this->fix_integer_overflow(intval(
 			$this->get_server_var('CONTENT_LENGTH')
 		));
-		$post_max_size = $this->get_config_bytes(ini_get('post_max_size'));
+		/*$post_max_size = $this->get_config_bytes(ini_get('post_max_size'));
 		if ($post_max_size && ($content_length > $post_max_size)) {
 			$file->error = $this->get_error_message('post_max_size');
 			return false;
-		}
+		}*/
 		if (!preg_match($this->options['accept_file_types'], $file->name)) {
 			$file->error = $this->get_error_message('accept_file_types');
 			return false;
