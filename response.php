@@ -16,7 +16,7 @@
 	}
 
 	$assigned_filename = md5($_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . $question_id);
-header('Access-Control-Allow-Origin', 'https://*.edx.org');
+//
 ?>
 <html>
 	<head>
