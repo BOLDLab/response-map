@@ -67,7 +67,7 @@
 	<head>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="css/response-map.css"/>
-
+		<meta charset="utf-8" />
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is"></script>
 		<script src="js/markerclusterer.js"></script>
