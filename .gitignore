@@ -44,4 +44,4 @@ build/buildinfo.properties
 build/config/buildinfo.properties
 
 # Database config (we need this for heroku)
-#config.php
+vendor
