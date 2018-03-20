@@ -46,7 +46,7 @@
 					url: url,
 					dataType: 'json',
 					done: function (e, data) {
-						console.log(data.result.imagefile);
+						//console.log(data.result.imagefile);
 						$.each(data.result.imagefile, function (index, file) {
 							if(file.error) {
 								$('#errors').html('<p>Error: '+file.error+'</p>');

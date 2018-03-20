@@ -15,5 +15,4 @@
 	$google_key = 'AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is';
 
 	header('Access-Control-Allow-Origin: *');
-	echo ">>>>>>>>>> >>>>>> <h1>".$_SERVER['HTTPS']."</h1>";
 ?>

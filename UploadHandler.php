@@ -184,7 +184,8 @@ class UploadHandler
 	}
 
 	protected function get_full_url() {
-		$https = !empty($_SERVER['HTTPS']);
+		//$https = !empty($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS'], 'on') === 0;
+		$https = TRUE; //forcing
 		return
 			($https ? 'https://' : 'http://').
 			(!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
