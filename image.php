@@ -6,14 +6,11 @@ $f = $_GET['f'];
 $path = explode('/',$f);
 
 $fn = array_pop($path);
-echo count($path).'<br>';
 
 $f = (count($path) === 0) ? $fn : $f;
 
-echo $f;
-return;
-header("content-type: image/png");
+header('Access-Control-Allow-Origin: *');
+header("Content-Type: image/png");
 
 echo file_get_contents('files/'.$f);
-
 ?>
