@@ -44,8 +44,9 @@ class UploadHandler
 	function __construct($options = null, $initialize = true, $error_messages = null) {
 		$this->options = array(
 			'script_url' => $this->get_full_url().'/',
-			'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/index.php?f=',
+			'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
 			'upload_url' => $this->get_full_url().'/files/',
+			'nhi_url' => $this->get_full_url().'/image.php?f='
 			'user_dirs' => false,
 			'mkdir_mode' => 0755,
 			'param_name' => 'imagefile',
@@ -184,8 +185,8 @@ class UploadHandler
 	}
 
 	protected function get_full_url() {
-		//$https = !empty($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS'], 'on') === 0;
-		$https = TRUE; //forcing
+		$https = !empty($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS'], 'on') === 0;
+		//$https = TRUE; //forcing
 		return
 			($https ? 'https://' : 'http://').
 			(!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
@@ -246,8 +247,10 @@ class UploadHandler
 			}
 			$version_path = rawurlencode($version).'/';
 		}
-		return $this->options['upload_url'].$this->get_user_path()
+		return $this->option['nhi_url'].$this->get_user_path()
 			.$version_path.rawurlencode($file_name);
+		//return $this->options['upload_url'].$this->get_user_path()
+			//.$version_path.rawurlencode($file_name);
 	}
 
 	protected function set_additional_file_properties($file) {
