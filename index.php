@@ -1,6 +1,7 @@
 <?php
+header('Access-Control-Allow-Origin', 'https://*.edx.org');
 session_start();
-error_reporting(E_ALL);
+
 if (isset($_POST['session_id'])) {
 		$session_id = $_POST['session_id'];
 		session_id($_POST['session_id']);
