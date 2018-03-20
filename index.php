@@ -1,5 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin', 'https://*.edx.org');
 session_start();
 
 if (isset($_POST['session_id'])) {

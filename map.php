@@ -61,6 +61,8 @@
 		$fp = @fopen($outcome_url, 'rb', FALSE, $ctx);
 		$response = @stream_get_contents($fp);
 	}
+	
+header('Access-Control-Allow-Origin', 'https://*.edx.org');
 ?>
 
 <html>
