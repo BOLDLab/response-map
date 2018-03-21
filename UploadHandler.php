@@ -358,8 +358,8 @@ class UploadHandler
 			$this->get_server_var('CONTENT_LENGTH')
 		));
 		$max_size = ini_get('post_max_size');
-		if(!$max_size) throw Error('bad config setting!!');
-		$post_max_size = $this->get_config_bytes($max_size);
+		//if(!$max_size) throw Error('bad config setting!!');
+		$post_max_size = @$this->get_config_bytes($max_size);
 		if ($post_max_size && ($content_length > $post_max_size)) {
 			$file->error = $this->get_error_message('post_max_size');
 			return false;
