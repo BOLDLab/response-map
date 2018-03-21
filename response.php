@@ -52,7 +52,7 @@
 								$('#errors').html('<p>Error: '+file.error+'</p>');
 							} else {
 								$('#errors').html('');
-								$('#image-preview').attr('src', 'image.php?f='.data.result.imagefile[0].thumbnailUrl);
+								$('#image-preview').attr('src', data.result.imagefile[0].thumbnailUrl);
 								//$('#player').attr('src','videoplayer.php?user_id=//<?php //echo $hashedplayer_id; ?>');
 								$('#uploadtext').text('');
 

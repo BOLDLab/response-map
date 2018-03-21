@@ -1,2 +1,10 @@
-#php_value upload_max_filesize 5M
-#php_value post_max_size 5M
+
+Options +FollowSymLinks +ExecCGI
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI}  (\.png|\.jpg|\.gif|\.jpeg|\.bmp)$
+RewriteRule (.*)  image.php?f= [QSA]
+
+</IfModule>

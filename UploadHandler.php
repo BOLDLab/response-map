@@ -46,7 +46,7 @@ class UploadHandler
 			'script_url' => $this->get_full_url().'/',
 			'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
 			'upload_url' => $this->get_full_url().'/files/',
-			'nhi_url' => $this->get_full_url().'/image.php?f=',
+			//'nhi_url' => $this->get_full_url().'/image.php?f=',
 			'user_dirs' => false,
 			'mkdir_mode' => 0755,
 			'param_name' => 'imagefile',
@@ -247,10 +247,8 @@ class UploadHandler
 			}
 			$version_path = rawurlencode($version).'/';
 		}
-		return $this->options['nhi_url'].$this->get_user_path()
+		return $this->options['upload_url'].$this->get_user_path()
 			.$version_path.rawurlencode($file_name);
-		//return $this->options['upload_url'].$this->get_user_path()
-			//.$version_path.rawurlencode($file_name);
 	}
 
 	protected function set_additional_file_properties($file) {
@@ -361,11 +359,11 @@ class UploadHandler
 		$content_length = $this->fix_integer_overflow(intval(
 			$this->get_server_var('CONTENT_LENGTH')
 		));
-		/*$post_max_size = $this->get_config_bytes(ini_get('post_max_size'));
+		$post_max_size = $this->get_config_bytes(ini_get('post_max_size'));
 		if ($post_max_size && ($content_length > $post_max_size)) {
 			$file->error = $this->get_error_message('post_max_size');
 			return false;
-		}*/
+		}
 		if (!preg_match($this->options['accept_file_types'], $file->name)) {
 			$file->error = $this->get_error_message('accept_file_types');
 			return false;
