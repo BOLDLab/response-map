@@ -200,7 +200,7 @@
 
 					$all_student_responses = json_encode($student_responses);
 					$word_frequency = json_encode(wordCount($all_text));
-
+					echo ">>>>>> Loading map....";
 					require('map.php');
 				}
 				else {

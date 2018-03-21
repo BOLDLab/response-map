@@ -353,7 +353,7 @@
 		<div class="response-word-cloud"></div>
 	<?php } else {
 	?>
-		<div class="alert alert-success" role="alert">Thank you for posting, please refresh to see the cloud tag.</div>
+		<div class="alert alert-success" role="alert">Thank you for posting.</div>
 	<?php
 	} ?>
 </html>
