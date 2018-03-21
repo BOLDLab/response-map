@@ -79,7 +79,7 @@
 		</script>
 	</head>
 
-	<form action="index.php" method="post">
+	<form action="index.php" method="POST" enctype="multipart/form-data">
 		<input class="question-did" name="lis_result_sourcedid" value="<?php echo $_POST['lis_result_sourcedid'] ?>">
 
 		<?php if ($display_name_loc) {?>
