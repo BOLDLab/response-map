@@ -46,7 +46,6 @@ class UploadHandler
 			'script_url' => $this->get_full_url().'/',
 			'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
 			'upload_url' => $this->get_full_url().'/files/',
-			//'nhi_url' => $this->get_full_url().'/image.php?f=',
 			'user_dirs' => false,
 			'mkdir_mode' => 0755,
 			'param_name' => 'imagefile',
@@ -185,8 +184,7 @@ class UploadHandler
 	}
 
 	protected function get_full_url() {
-		$https = !empty($_SERVER['HTTPS']) && !strcasecmp($_SERVER['HTTPS'], 'on') === 0;
-		//$https = TRUE; //forcing
+		$https = !empty($_SERVER['HTTPS']) && strcasecmp($_SERVER['HTTPS'], 'on') === 0;
 		return
 			($https ? 'https://' : 'http://').
 			(!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
@@ -1107,7 +1105,7 @@ class UploadHandler
 	protected function body($str) {
 		echo $str;
 	}
-
+	
 	protected function header($str) {
 		header($str);
 	}
