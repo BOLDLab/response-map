@@ -54,7 +54,7 @@
 							} else {
 								$('#errors').html('');
 								$('#image-preview').attr('src', data.result.imagefile[0].thumbnailUrl);
-								//$('#player').attr('src','videoplayer.php?user_id=<?php echo $hashedplayer_id; ?>');
+								//$('#player').attr('src','videoplayer.php?user_id= //echo $hashedplayer_id; ');
 								$('#uploadtext').text('Overwrite uploaded video');
 
 								$('.image-url').val(data.result.imagefile[0].url);
