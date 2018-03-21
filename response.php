@@ -2,7 +2,9 @@
 	function return_bytes($val) {
 		$val = trim($val);
 		$last = strtolower($val[strlen($val)-1]);
+		if(!is_int($val)) return 'unknown';
 		switch($last) {
+
 			// The 'G' modifier is available since PHP 5.1.0
 			case 'g':
 				$val *= 1024;
