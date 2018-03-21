@@ -23,8 +23,8 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-		<script src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
+		<script src="//maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is"></script>
+		<script src="//google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
 
 		<link rel="stylesheet" href="css/jquery.fileupload.css">
 		<link rel="stylesheet" href="css/response-map.css">
@@ -78,7 +78,7 @@
 			fixload();
 		</script>
 	</head>
-	
+
 	<form action="index.php" method="post">
 		<input class="question-did" name="lis_result_sourcedid" value="<?php echo $_POST['lis_result_sourcedid'] ?>">
 
@@ -94,10 +94,10 @@
 		<?php } ?>
 		<div class="input-group">
 			<?php $response_label = 'Response'; ?>
-			<?php 
-			if(isset($_POST['custom_responsetext'])) { 
+			<?php
+			if(isset($_POST['custom_responsetext'])) {
 				$response_label = $_POST['custom_responsetext'];
-			}	
+			}
 			?>
 			<span class="input-group-addon"><?php echo $response_label; ?></span>
 			<input type="text" class="form-control user-response" name="user_response">
@@ -131,7 +131,7 @@
 
 		<input type="text" class="image-url" name="user_image_url">
 		<input type="text" class="thumbnail-url" name="user_thumbnail_url">
-		
+
 		<input type="hidden" name="ltifix_user_id" value="<?php echo $_SESSION[$_POST['lis_result_sourcedid']]['user_id']; ?>" />
 
 		<button type="submit" class="save-question btn btn-primary">Save</button>

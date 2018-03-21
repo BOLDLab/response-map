@@ -69,7 +69,7 @@
 		<link rel="stylesheet" href="css/response-map.css"/>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script src="//maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is"></script>
 		<script src="js/markerclusterer.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
@@ -139,7 +139,7 @@
 					mapOptions
 				);
 
-				for (var key in mapResponses) {					
+				for (var key in mapResponses) {
 					// First marker contains student's own response
 					if (key === 0) {
 						// Convert first marker lat and long to float for use in distance calculations
@@ -164,7 +164,7 @@
 
 						// Calculate the distance to centre marker
 						mapResponses[key].distanceToCentre = Math.sqrt(Math.pow(mapResponses[key].lat - mapResponses[0].lat, 2) + Math.pow(mapResponses[key].lng - mapResponses[0].lng, 2));
-					
+
 						mapResponses[key].myMarker = false;
 					}
 
@@ -273,7 +273,7 @@
 				console.log("AAA");
 				console.log(frequencyList);
 				console.log("BBB");
-				
+
 				var color_range = ['#ddd', '#ccc', '#bbb', '#aaa', '#999', '#888', '#777', '#666', '#555', '#444', '#333', '#222'];
 				var use_color = false;
 				<?php if(isset($_POST['custom_usecolor']) && $_POST['custom_usecolor'] == 'true') { ?>
