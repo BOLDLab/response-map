@@ -5,8 +5,8 @@ require_once('OAuth.php');
 class Lti {
 	protected $testing = false;
 	protected $ltivars = array();
-	protected $secret = '6edexy9';
-	protected $key = 'meroku8';
+	protected $secret = '123456';
+	protected $key = 'rmap';
 	protected $valid = false;
 	protected $errors = '';
 
