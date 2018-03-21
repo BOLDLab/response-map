@@ -1,9 +1,8 @@
 <?php
 	function return_bytes($val) {
-		throw Error("What??? $val");
 		$val = trim($val);
 		$last = strtolower($val[strlen($val)-1]);
-		//if(!is_string($val)) return 'unknown';
+
 		switch($last) {
 
 			// The 'G' modifier is available since PHP 5.1.0
