@@ -336,7 +336,7 @@
 			</div>
 		</div>
 	</div>
-	<form method="post" action="update_location.php">
+	<form method="POST" enctype="multipart/form-data" action="update_location.php">
 		<input type='hidden' name='postvars' value='<?php echo json_encode($_POST); ?>' />
 		<input type="hidden" name="user_id" value="<?php echo $map_user_id; ?>" />
 		<div class="input-group" style="margin-top:20px;">

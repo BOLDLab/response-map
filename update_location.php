@@ -23,7 +23,7 @@
 </head>
 <body>
 <p>Redirecting, please refresh your browser if the map doesn't appear</p>
-<form action='index.php' method='post' name='redirect_frm'>
+<form action='index.php' method='POST' enctype="multipart/form-data" name='redirect_frm'>
 <?php
 foreach ($postvars as $a => $b) {
 echo "<input type='hidden' name='".htmlentities($a)."' value='".htmlentities($b)."'>";
