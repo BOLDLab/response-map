@@ -16,7 +16,6 @@
 	}
 
 	$assigned_filename = md5($_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . $question_id);
-//
 ?>
 <html>
 	<head>
@@ -24,8 +23,8 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?v=3.32&key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is" type='text/javascript'></script>
-		<script src="https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is"></script>
+		<script src="https://raw.githubusercontent.com/googlemaps/js-marker-clusterer/gh-pages/src/markerclusterer.js"></script>
 
 		<link rel="stylesheet" href="css/jquery.fileupload.css">
 		<link rel="stylesheet" href="css/response-map.css">
@@ -53,8 +52,8 @@
 							} else {
 								$('#errors').html('');
 								$('#image-preview').attr('src', data.result.imagefile[0].thumbnailUrl);
-								//$('#player').attr('src','videoplayer.php?user_id=//<?php //echo $hashedplayer_id; ?>');
-								$('#uploadtext').text('');
+								//$('#player').attr('src','videoplayer.php?user_id=<?php echo $hashedplayer_id; ?>');
+								$('#uploadtext').text('Overwrite uploaded video');
 
 								$('.image-url').val(data.result.imagefile[0].url);
 								$('.thumbnail-url').val(data.result.imagefile[0].thumbnailUrl);
@@ -85,7 +84,7 @@
 
 		<?php if ($display_name_loc) {?>
 			<div class="input-group">
-				<span class="input-group-addon">Name</span>
+				<span class="input-group-addon">Full Name</span>
 				<input type="text" class="form-control user-fullname" name="user_fullname">
 			</div>
 			<div class="input-group">
@@ -94,13 +93,7 @@
 			</div>
 		<?php } ?>
 		<div class="input-group">
-			<?php $response_label = 'Response'; ?>
-			<?php
-			if(isset($_POST['custom_responsetext'])) {
-				$response_label = $_POST['custom_responsetext'];
-			}
-			?>
-			<span class="input-group-addon"><?php echo $response_label; ?></span>
+			<span class="input-group-addon">Response</span>
 			<input type="text" class="form-control user-response" name="user_response">
 		</div>
 
@@ -108,7 +101,7 @@
 			<!-- The fileinput-button span is used to style the file input field as button -->
 			<span class="filelimit"><?php echo 'Maximum file size is ' . (return_bytes(ini_get('post_max_size')) / 1024 / 1024) . ' MB'; ?></span>
 			<span class="btn btn-primary fileinput-button">
-				<i class="glyphicon glyphicon-plus"></i> Upload Image
+				<i class="glyphicon glyphicon-plus"></i>
 				<span id="uploadtext"><?php echo $selecttext; ?></span>
 				<!-- The file input field used as target for the file upload widget -->
 				<input id="fileupload" type="file" name="imagefile">
@@ -132,8 +125,6 @@
 
 		<input type="text" class="image-url" name="user_image_url">
 		<input type="text" class="thumbnail-url" name="user_thumbnail_url">
-
-		<input type="hidden" name="ltifix_user_id" value="<?php echo $_SESSION[$_POST['lis_result_sourcedid']]['user_id']; ?>" />
 
 		<button type="submit" class="save-question btn btn-primary">Save</button>
 	</form>
