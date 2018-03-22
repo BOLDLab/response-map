@@ -23,14 +23,11 @@ Clone this repo:
 
 ```bash
 git clone git@github.com:BOLDLab/response-map.git
+cd response-map
 ```
 
 * Modify the `.gitignore` file, removing line 47 (`config.php`)
 
-```bash
-cd response-map
-git
-```
 ##### Connection String
 First, you must edit config.example.php to contain the appropriate MySQL credentials from the JawsDB settings page:
 
@@ -43,6 +40,12 @@ Get the Google Maps API key and save the file as config.php.
 Set the `$allowed_origins` array to contain the allowed origins for your app.
 
 Then, you must specify and LTI key and secret in lti.php.
+
+### Deploy to Heroku
+```bash
+git push heroku master
+heroku logs -t #this is to tail your logs to see if all went well.
+```
 
 Within your course in edX Studio, the LTI module must be enabled in order to create LTI components. This can be done by going to Settings > Advanced Settings and adding ```"lti"``` to the array.
 
