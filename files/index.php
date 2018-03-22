@@ -1,5 +1,5 @@
 <?php
-$dir    = 'files';
+$dir    = '.';
 $files1 = scandir($dir);
 
 print_r($files1);
