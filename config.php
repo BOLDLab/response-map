@@ -2,10 +2,10 @@
 	// Rename this file to config.php and enter in your MySQL database credentials
 
 	// MySQL database credentials
-		$host = 'iwqrvsv8e5fz4uni.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-	$database_name = 'ee4r54etwrtw7ilw';
-	$database_user = 'dllphy9r18z7gdgl';
-	$database_pass = 'qf2r9wfczyu2ezwy';
+		$host = 'bold.newcastle.edu.au';
+	$database_name = 'edx-heroku-hello-map';
+	$database_user = 'edx-heroku';
+	$database_pass = 'AXvsy5E7TcMy11XR';
 	$adminpassword = 'ctlBOLD#nhi';
 
 	// Establish a connection to the database
