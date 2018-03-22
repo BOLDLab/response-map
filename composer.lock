@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d28b717946089dab6d4e5a4468ec24b5",
+    "content-hash": "50dc55695324f1d5b05eb1a26f04051a",
     "packages": [],
     "packages-dev": [],
     "aliases": [],
@@ -14,8 +14,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": "~7.2.3",
-        "ext-gd": "~7.2.3",
-        "ext-mysqli": "~7.2.3"
+        "ext-gd": "~7.2.3"
     },
     "platform-dev": []
 }
