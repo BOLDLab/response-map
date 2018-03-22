@@ -1,4 +1,7 @@
 <?php
+if(in_array($allowed_origins, $_SERVER['SERVER_NAME'])) {
+		header("Access-Control-Allow-Origin: $str");
+}
 session_start();
 if (isset($_POST['session_id'])) {
 		$session_id = $_POST['session_id'];

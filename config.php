@@ -13,4 +13,6 @@
 
 	// Google Maps API key
 	$google_key = 'AIzaSyCyyijfRSuYHQDxtZREVk20YImRrwwu_Is';
+
+	$allowed_origins = ["https://edx.org", "https://studio.edx.org"];
 ?>
