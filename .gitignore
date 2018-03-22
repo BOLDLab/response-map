@@ -43,5 +43,8 @@ publish
 build/buildinfo.properties
 build/config/buildinfo.properties
 
-# Database config (we need this for heroku)
+# Database config (remove this before deploying to Heroku)
+config.php
+
+# Composer files
 vendor

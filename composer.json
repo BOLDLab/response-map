@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "compile": [
-      "chmod 755 files"
+      "chmod 755 -R files"
     ]
   },
   "require": {

@@ -184,10 +184,7 @@ class UploadHandler
 	}
 
 	protected function get_full_url() {
-		//$https = !empty($_SERVER['HTTPS']) && strcasecmp($_SERVER['HTTPS'], 'on') === 0;
-		//error_log("HTTPS??? ");
-		//error_log($https);
-	//	$https = true;
+		// HTTPS detection not reliable on Heroku
 		return
 			"//".
 			(!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').

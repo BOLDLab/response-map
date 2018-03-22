@@ -3,18 +3,46 @@
 The response map is an LTI tool that allows students to respond to a question or give feedback and have the responses show up on a world map based on the location that they enter in. All the response are also processed and turned into a word cloud at the bottom of the map. Students can also upload an image along with their response.
 
 ## Requirements
-You will need have an Apache HTTP server which is configured to serve PHP files and have a MySQL database configured to store student details and responses.
+* Get a Heroku account at [heroku.com](https://heroku.com)
+* [Create a Dyno](https://www.heroku.com/pricing) that fits your requirements.
+* Create a new PHP app in Heroku
+* Add the JawsDB MySQL resource
 
+Then login to the heroku cli
+```bash
+heroku login
+Enter your Heroku credentials:
+Email: [your email here]
+Password: [your password here]
+Two-factor code: [if required]
+Logged in as you@your email address
+```
 ## Installation
-First, you must edit config.example.php to contain the appropriate MySQL credentials and Google Maps API key and save the file as config.php.
+
+Clone this repo:
+
+```bash
+git clone git@github.com:BOLDLab/response-map.git
+```
+
+* Modify the `.gitignore` file, removing line 47 (`config.php`)
+
+```bash
+cd response-map
+git
+```
+##### Connection String
+First, you must edit config.example.php to contain the appropriate MySQL credentials from the JawsDB settings page:
+
+Get the host and database name from the connection string (former is host latter is DB name):
+
+<span style='font-family: courier, monospace'> mysql://jdkfjlsa-039:8hloejnvbbjbe@**0kpwnvhuh.hehuvuh.eu-west-1.rds.amazonaws.com**:3306/**nnjdn8yh83hhb**</span>
+
+Get the Google Maps API key and save the file as config.php.
+
+Set the `$allowed_origins` array to contain the allowed origins for your app.
 
 Then, you must specify and LTI key and secret in lti.php.
-
-Images are uploaded to the files folder which needs the following upload permissions:
-```
-chown apache:apache -R files/
-chmod 755 -R files/
-```
 
 Within your course in edX Studio, the LTI module must be enabled in order to create LTI components. This can be done by going to Settings > Advanced Settings and adding ```"lti"``` to the array.
 
