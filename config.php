@@ -2,7 +2,7 @@
 	// Rename this file to config.php and enter in your MySQL database credentials
 
 	// MySQL database credentials
-	$host = '134.148.29.160';
+	$host = 'mysql://edx-heroku@134.148.29.160:edx-heroku-hello-map';
 	$database_name = 'edx-heroku-hello-map';
 	$database_user = 'edx-heroku';
 	$database_pass = 'AXvsy5E7TcMy11XR';
