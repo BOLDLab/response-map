@@ -194,9 +194,12 @@ if (isset($_POST['session_id'])) {
 		$geocode = JSON_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($_POST['user_location']) . "&sensor=false&key=" . $google_key));
 		error_log("XXXXX");
 		error_log("LOG: status: $geocode->status");
-		error_log(var_export($_POST));
-		error_log(var_export($geocode));
+		error_log(var_export($_POST, TRUE));
+		error_log(var_export($geocode, TRUE));
 		error_log("YYYYY");
+		if($geocode_status === 'ZERO_RESULTS') {
+					$zero_results = TRUE;
+		}
 		if ($geocode->status === 'OK') {
 			$insert_user_query = mysqli_query($conn, 'INSERT INTO user (user_id, fullname, location, lat, lng, create_time) VALUES ("' . $_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . '", "' . $_POST['user_fullname'] . '", "' . $_POST['user_location'] . '", ' . $geocode->results[0]->geometry->location->lat . ', ' . $geocode->results[0]->geometry->location->lng . ', NOW())');
 

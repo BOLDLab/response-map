@@ -81,7 +81,9 @@
 
 	<form action="index.php" enctype="multipart/form-data" method="POST">
 		<input class="question-did" name="lis_result_sourcedid" value="<?php echo $_POST['lis_result_sourcedid'] ?>">
-
+		<?php if (isset($zero_results)) {?>
+				<div class="input-group error">Google says this location does not exist on planet Earth. </div>
+		<?php } ?>
 		<?php if ($display_name_loc) {?>
 			<div class="input-group">
 				<span class="input-group-addon">Name</span>
