@@ -192,11 +192,7 @@ if (isset($_POST['session_id'])) {
 	}
 	elseif (!empty($_POST['user_fullname']) && !empty($_POST['user_location'])) {
 		$geocode = JSON_decode(file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($_POST['user_location']) . "&sensor=false&key=" . $google_key));
-		error_log("XXXXX");
-		error_log("LOG: status: $geocode->status");
-		error_log(var_export($_POST, TRUE));
-		error_log(var_export($geocode, TRUE));
-		error_log("YYYYY");
+
 		if($geocode_status === 'ZERO_RESULTS') {
 					$zero_results = TRUE;
 		}
