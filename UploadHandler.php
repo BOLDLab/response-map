@@ -187,9 +187,9 @@ class UploadHandler
 		//$https = !empty($_SERVER['HTTPS']) && strcasecmp($_SERVER['HTTPS'], 'on') === 0;
 		//error_log("HTTPS??? ");
 		//error_log($https);
-		$https = true;
+	//	$https = true;
 		return
-			($https ? 'https://' : 'http://').
+			"//".
 			(!empty($_SERVER['REMOTE_USER']) ? $_SERVER['REMOTE_USER'].'@' : '').
 			(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
 			($https && $_SERVER['SERVER_PORT'] === 443 ||
