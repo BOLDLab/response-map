@@ -1,6 +1,6 @@
 <?php
 error_log($_SERVER['SERVER_NAME']);
-if(in_array($_SERVER['SERVER_NAME']),$allowed_origins) {
+if(in_array($_SERVER['SERVER_NAME'],$allowed_origins)) {
 		$str = $_SERVER['SERVER_NAME'];
 		header("Access-Control-Allow-Origin: $str");
 }
