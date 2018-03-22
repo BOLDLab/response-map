@@ -1,4 +1,6 @@
 <?php
+require_once('config.php');
+
 error_log($_SERVER['SERVER_NAME']);
 if(in_array($_SERVER['SERVER_NAME'],$allowed_origins)) {
 		$str = $_SERVER['SERVER_NAME'];
@@ -25,7 +27,7 @@ if (isset($_POST['session_id'])) {
 	$question_url_id = explode('-', $lis_result_sourcedid_split[1]);
 	$question_id = $question_url_id[count($question_url_id) - 1];
 
-	require_once('config.php');
+
 
 	if (mysqli_connect_error()) {
 		echo 'Failed to connect to question database: ' . mysqli_connect_error();
