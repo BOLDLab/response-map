@@ -44,7 +44,8 @@ build/buildinfo.properties
 build/config/buildinfo.properties
 
 heroku-deploy.sh
+heroku-config-set.sh
 
 # Composer vendor files
 vendor
-dist
+deploy
