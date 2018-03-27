@@ -1,8 +1,5 @@
 <?php
-	// Rename this file to config.php and enter in your MySQL database credentials
-
-	// MySQL database credentials
-	$host = getenv('MYSQL_DB_HOST')
+	$host = getenv('MYSQL_DB_HOST');
 	$database_name = getenv('MYSQL_DB_NAME');
 	$database_user = getenv('MYSQL_DB_USER');
 	$database_pass = getenv('MYSQL_DB_PASSWORD');

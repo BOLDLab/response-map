@@ -47,3 +47,4 @@ heroku-deploy.sh
 
 # Composer vendor files
 vendor
+dist
