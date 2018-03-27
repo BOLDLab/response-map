@@ -1,4 +1,5 @@
 <?php
+require('vendor/autoload.php');
 /*
  * jQuery File Upload Plugin PHP Class 7.1.4
  * https://github.com/blueimp/jQuery-File-Upload
@@ -1057,8 +1058,15 @@ class UploadHandler
 						fopen($uploaded_file, 'r'),
 						FILE_APPEND
 					);
+
 				} else {
 					move_uploaded_file($uploaded_file, $file_path);
+
+					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
+					$s3 = Aws\S3\S3Client::factory();
+					$bucket = getenv('S3_BUCKET') ? : die('No "S3_BUCKET" config var in found in env!');
+					$upload = $s3->upload($bucket, $file_path, fopen($uploaded_file, 'rb'), 'public-read');
+
 				}
 			} else {
 				// Non-multipart uploads (PUT method support)
