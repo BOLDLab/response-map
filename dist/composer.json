@@ -1,0 +1,15 @@
+{
+  "name": "uon/response-map",
+  "description": "response map",
+  "license": "MIT",
+  "scripts": {
+    "compile": [
+      "chmod 755 -R files"
+    ]
+  },
+  "require": {
+          "php": "~7.2.3",
+          "ext-gd": "~7.2.3",
+    "aws/aws-sdk-php": "~2.6"
+  }
+}
