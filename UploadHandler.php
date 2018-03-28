@@ -1060,8 +1060,8 @@ class UploadHandler
 					);
 
 				} else {
-					$arr = explode($file_path);
-					$name = $name[count($name)-1];
+					$arr = explode($file_path, '/');
+					$name = $name[count($arr)-1];
 					error_log(`THE NAME: $name`);
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
 					$s3 = Aws\S3\S3Client::factory(array('profile' => 'default'));
