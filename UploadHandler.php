@@ -1060,12 +1060,13 @@ class UploadHandler
 					);
 
 				} else {
-					move_uploaded_file($uploaded_file, $file_path);
 
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
 					$s3 = Aws\S3\S3Client::factory();
 					$bucket = getenv('S3_BUCKET') ? : die('No "S3_BUCKET" config var in found in env!');
-					$upload = $s3->upload($bucket, $file_path, fopen($uploaded_file, 'rb'), 'public-read');
+					$upload = $s3->upload($bucket, 's3://nhixresponsemap/', fopen($uploaded_file, 'rb'), 'public-read');
+
+					move_uploaded_file($uploaded_file, $file_path);
 
 				}
 			} else {
