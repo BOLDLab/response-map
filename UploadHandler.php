@@ -1072,12 +1072,12 @@ class UploadHandler
     					'version' => '2006-03-01',
     					'region'  => 'us-east-1'
 					]);*/
-
-					$config = array(
-								'key'    => getenv('AWS_ACCESS_KEY'),
-								'secret' => getenv('AWS_SECRET_KEY'),
-								'region' => 'us-east-1'
-					);
+					$credentials = new Aws\Credentials\Credentials(getenv('AWS_ACCESS_KEY'), getenv('AWS_SECRET_KEY'));
+					$config = [
+							'region' => 'us-east-1',
+							'version' => '2006-03-01',
+							'credentials' => $credentials
+					];
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
 					//require_once('./aws_config.php');
 					$aws = new Aws($config);
