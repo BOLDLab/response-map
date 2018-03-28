@@ -1062,7 +1062,7 @@ class UploadHandler
 
 				} else {
 					$arr = explode($file_path, '/');
-					$name = $name[count($arr)-1];
+					$name = end($arr);
 					error_log("THE PATH: $file_path");
 					error_log("THE NAME: $name");
 
