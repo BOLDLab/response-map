@@ -1,6 +1,8 @@
 <?php
 require('vendor/autoload.php');
+use Aws\S3\S3Client;
 use Aws\Resource\Aws;
+
 /*
  * jQuery File Upload Plugin PHP Class 7.1.4
  * https://github.com/blueimp/jQuery-File-Upload
@@ -1065,6 +1067,12 @@ class UploadHandler
 					$name = end($arr);
 					error_log("THE PATH: $file_path");
 					error_log("THE NAME: $name");
+
+					/*$s3 = new S3Client([
+    					'version' => '2006-03-01',
+    					'region'  => 'us-east-1'
+					]);*/
+
 					$config = array(
 					    // Bootstrap the configuration file with AWS specific features
 					    'includes' => array('_aws'),
@@ -1086,7 +1094,7 @@ class UploadHandler
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
 					//require_once('./aws_config.php');
 					$aws = new Aws($config);
-					$s3 = $aws->s3();
+					$s3 = $aws->s3;
 					$bucket = $bucket = $aws->s3->bucket(getenv('S3_BUCKET')) ? : die('No "S3_BUCKET" config var in found in env!');
 					$object = $bucket->putObject([
 						'Key' => "images/$name",
