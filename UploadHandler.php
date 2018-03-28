@@ -1068,7 +1068,7 @@ class UploadHandler
 					$bucket = getenv('S3_BUCKET') ? : die('No "S3_BUCKET" config var in found in env!');
 					$upload = $s3->upload($bucket, $name, fopen($uploaded_file, 'rb'));
 
-					move_uploaded_file($uploaded_file, $file_path);
+					//move_uploaded_file($uploaded_file, $file_path);
 
 				}
 			} else {
