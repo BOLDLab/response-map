@@ -1065,9 +1065,26 @@ class UploadHandler
 					$name = end($arr);
 					error_log("THE PATH: $file_path");
 					error_log("THE NAME: $name");
-
+					$config = array(
+					    // Bootstrap the configuration file with AWS specific features
+					    'includes' => array('_aws'),
+					    'services' => array(
+					        // All AWS clients extend from 'default_settings'. Here we are
+					        // overriding 'default_settings' with our default credentials and
+					        // providing a default region setting.
+					        'default_settings' => array(
+					            'params' => array(
+					                'credentials' => array(
+					                    'key'    => getenv('AWS_ACCESS_KEY'),
+					                    'secret' => getenv('AWS_SECRET_KEY'),
+					                ),
+					                'region' => 'us-east-1'
+					            )
+					        )
+					    )
+					);
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
-					require_once('./aws_config.php');
+					//require_once('./aws_config.php');
 					$aws = new Aws($config);
 					$s3 = $aws->s3();
 					$bucket = $bucket = $aws->s3->bucket(getenv('S3_BUCKET')) ? : die('No "S3_BUCKET" config var in found in env!');
