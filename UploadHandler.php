@@ -1074,7 +1074,7 @@ class UploadHandler
 					]);*/
 
 					$config = [
-							'region' => 'us-east-1',
+							'region' => 'us',
 							'version' => '2006-03-01',
 							'credentials' => [
 								'key' => getenv('AWS_ACCESS_KEY'),
@@ -1082,10 +1082,10 @@ class UploadHandler
 							]
 					];
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
-			
+
 					$aws = new Aws($config);
 					$s3 = $aws->s3;
-					$bucket = $bucket = $aws->s3->bucket(getenv('S3_BUCKET')) ? : die('No "S3_BUCKET" config var in found in env!');
+					$bucket = $aws->s3->bucket(getenv('S3_BUCKET')) ? : die('No "S3_BUCKET" config var in found in env!');
 					$object = $bucket->putObject([
 						'Key' => "images/$name",
 						'Body' => fopen($uploaded_file, 'rb')
