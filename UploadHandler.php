@@ -1064,16 +1064,17 @@ class UploadHandler
 					$arr = explode($file_path, '/');
 					$name = $name[count($arr)-1];
 					error_log("THE NAME: $name");
+					
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
-
 					$config = require_once('aws_config.php');
 					$aws = new Aws(config);
 					$s3 = $aws->s3();
-					$bucket = getenv('S3_BUCKET') ? : die('No "S3_BUCKET" config var in found in env!');
-					$upload = $s3->upload($bucket, $name, fopen($uploaded_file, 'rb'));
-
+					$bucket = $bucket = $aws->s3->bucket(getenv('S3_BUCKET')) ? : die('No "S3_BUCKET" config var in found in env!');
+					$object = $bucket->putObject([
+						'Key' => "images/$name",
+						'Body' => fopen($uploaded_file, 'rb')
+					]);
 					//move_uploaded_file($uploaded_file, $file_path);
-
 				}
 			} else {
 				// Non-multipart uploads (PUT method support)
