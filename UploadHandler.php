@@ -1074,7 +1074,7 @@ class UploadHandler
 					]);*/
 
 					$config = [
-							'region' => 'us',
+							'region' => getenv('AWS_REGION'),
 							'version' => '2006-03-01',
 							'credentials' => [
 								'key' => getenv('AWS_ACCESS_KEY'),
