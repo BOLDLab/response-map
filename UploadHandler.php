@@ -1064,11 +1064,11 @@ class UploadHandler
 					$name = $name[count($name)-1];
 					error_log(`THE NAME: $name`);
 					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
-					$s3 = Aws\S3\S3Client::factory();
+					$s3 = Aws\S3\S3Client::factory(array('profile' => 'default'));
 					$bucket = getenv('S3_BUCKET') ? : die('No "S3_BUCKET" config var in found in env!');
 					$upload = $s3->upload($bucket, $name, fopen($uploaded_file, 'rb'));
 
-					move_uploaded_file($uploaded_file, $file_path);
+					//move_uploaded_file($uploaded_file, $file_path);
 
 				}
 			} else {
