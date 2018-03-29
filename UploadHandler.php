@@ -1085,7 +1085,7 @@ class UploadHandler
 					$p = array_slice($arr, 0, $l-1);
 
 					$thumb_path = implode('/', $p);
-					$thumb_path .= "/thumbnails/$name";
+					$thumb_path .= "/thumbnail/$name";
 
 					$object = $bucket->putObject([
 						'Key' => "images/$name",
@@ -1110,11 +1110,11 @@ class UploadHandler
 				$file->url = $this->get_download_url($file->name);
 				if ($this->is_valid_image_file($file_path)) {
 					$this->handle_image_file($file_path, $file);
-					error_log(var_export($file, TRUE));
+					//error_log(var_export($file, TRUE));
 					if($thumb_path) {
 							$object = $bucket->putObject([
-								'Key' => "images/thumbnails/$name",
-								'Body' => fopen($file->path, 'rb')
+								'Key' => "images/thumbnail/$name",
+								'Body' => fopen("file/thumbnail/$name", 'rb')
 							]);
 
 							$aws_thumb_uri = $object->getData()['@metadata']['effectiveUri'];
