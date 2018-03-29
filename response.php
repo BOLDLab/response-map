@@ -51,12 +51,11 @@
 								$('#errors').html('<p>Error: '+file.error+'</p>');
 							} else {
 								$('#errors').html('');
-								$('#image-preview').attr('src', data.result.imagefile[0].thumbnailUrl);
-								//$('#player').attr('src','videoplayer.php?user_id=<?php echo $hashedplayer_id; ?>');
+								$('#image-preview').attr('src', data.result.imagefile[0].aws_thumb_uri);
 								$('#uploadtext').text('');
 
-								$('.image-url').val(data.result.imagefile[0].url);
-								$('.thumbnail-url').val(data.result.imagefile[0].thumbnailUrl);
+								$('.image-url').val(data.result.imagefile[0].aws_uri);
+								$('.thumbnail-url').val(data.result.imagefile[0].aws_thumb_uri);
 							}
 						});
 					},

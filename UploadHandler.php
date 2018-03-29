@@ -1040,6 +1040,21 @@ class UploadHandler
 	protected function handle_file_upload($uploaded_file, $name, $size, $type, $error,
 			$index = null, $content_range = null) {
 		$file = new stdClass();
+		$aws_uri = null; // from AWS metadata
+		$config = [
+				'region' => getenv('AWS_REGION'),
+				'version' => '2006-03-01',
+				'credentials' => [
+					'key' => getenv('AWS_ACCESS_KEY'),
+					'secret' => getenv('AWS_SECRET_KEY')
+				]
+		];
+		// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
+
+		$aws = new Aws($config);
+		$s3 = $aws->s3;
+		$bucket = $aws->s3->bucket(getenv('S3_BUCKET')) ? : die('No "S3_BUCKET" config var in found in env!');
+
 		$file->name = $this->get_file_name($uploaded_file, $name, $size, $type, $error,
 			$index, $content_range);
 		$file->size = $this->fix_integer_overflow(intval($size));
@@ -1050,6 +1065,7 @@ class UploadHandler
 			if (!is_dir($upload_dir)) {
 				mkdir($upload_dir, $this->options['mkdir_mode'], true);
 			}
+			// note this is not AWS file upload path
 			$file_path = $this->get_upload_path($file->name);
 			$append_file = $content_range && is_file($file_path) &&
 				$file->size > $this->get_file_size($file_path);
@@ -1065,33 +1081,21 @@ class UploadHandler
 				} else {
 					$arr = explode('/', $file_path);
 					$name = end($arr);
-					error_log("THE PATH: $file_path");
-					error_log("THE NAME: $name");
+					$l = count($arr);
+					$p = array_slice($arr, 0, $l-1);
 
-					/*$s3 = new S3Client([
-    					'version' => '2006-03-01',
-    					'region'  => 'us-east-1'
-					]);*/
+					$thumb_path = implode('/', $p);
+					$thumb_path .= "/thumbnails/$name";
 
-					$config = [
-							'region' => getenv('AWS_REGION'),
-							'version' => '2006-03-01',
-							'credentials' => [
-								'key' => getenv('AWS_ACCESS_KEY'),
-								'secret' => getenv('AWS_SECRET_KEY')
-							]
-					];
-					// P SIJPKES - added copy file to S3 bucket, allows Heroku to provision files dir from S3
-
-					$aws = new Aws($config);
-					$s3 = $aws->s3;
-					$bucket = $aws->s3->bucket(getenv('S3_BUCKET')) ? : die('No "S3_BUCKET" config var in found in env!');
 					$object = $bucket->putObject([
 						'Key' => "images/$name",
 						'Body' => fopen($uploaded_file, 'rb')
 					]);
 
+					$aws_uri = $object->getData()['@metadata']['effectiveUri'];
 					move_uploaded_file($uploaded_file, $file_path);
+
+					unset($object);
 				}
 			} else {
 				// Non-multipart uploads (PUT method support)
@@ -1106,6 +1110,15 @@ class UploadHandler
 				$file->url = $this->get_download_url($file->name);
 				if ($this->is_valid_image_file($file_path)) {
 					$this->handle_image_file($file_path, $file);
+
+					if($thumb_path) {
+							$object = $bucket->putObject([
+								'Key' => "images/thumbnails/$name",
+								'Body' => fopen($thumb_path, 'rb')
+							]);
+
+							$aws_thumb_uri = $object->getData()['@metadata']['effectiveUri'];
+					}
 				}
 			} else {
 				$file->size = $file_size;
@@ -1114,6 +1127,8 @@ class UploadHandler
 					$file->error = $this->get_error_message('abort');
 				}
 			}
+			$file['aws_uri'] = $aws_uri;
+			$file['aws_thumb_uri'] = $aws_thumb_uri;
 			$this->set_additional_file_properties($file);
 		}
 		return $file;
@@ -1344,9 +1359,7 @@ foreach ($upload['tmp_name'] as $index => $value) {
 					$file_name = $_GET['user_id'].'.'.$ext;
 				}
 			}
-			//print_r($upload);
-			//echo $file_name;
-			//die();
+
 			$files[] = $this->handle_file_upload(
 				isset($upload['tmp_name']) ? $upload['tmp_name'] : null,
 				$file_name ? $file_name : (isset($upload['name']) ?
