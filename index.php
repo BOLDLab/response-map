@@ -95,6 +95,7 @@ if (isset($_POST['session_id'])) {
 	// Ensure that the name, location and response are http and quote escaped
 	$_POST = escapeUserInput($_POST);
 
+	error_log("GOT USER ID: ".$_SESSION[$_POST['lis_result_sourcedid']]['user_id']);
 	// Check to see if student has submitted fullname and location
 	$select_user_query = mysqli_query($conn, 'SELECT fullname, location, lat, lng FROM user WHERE user_id = "' . $_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . '"');
 	$user_row = mysqli_fetch_row($select_user_query);
