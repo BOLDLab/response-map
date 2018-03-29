@@ -107,7 +107,12 @@ if (isset($_POST['session_id'])) {
 			$student_responses[0] = new stdClass();
 
 			if (empty($self_row)) {
-				$insert_response_query = mysqli_query($conn, 'INSERT INTO response (resource_id, response_body, user_id, create_time) VALUES ("' . $question_id . '", "' . $_POST['user_response'] . '", "' . $_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . '", NOW())');
+				$user_id = $_SESSION[$_POST['lis_result_sourcedid']]['user_id'];
+				$insert_query =
+					"INSERT INTO response (resource_id, response_body, user_id, create_time) VALUES".
+				 	"('$question_id' , '$_POST[user_response]', '$user_id', NOW())";
+
+				$insert_response_query = mysqli_query($conn, $insert_query);
 
 				if (!empty($_POST['user_image_url']) && !empty($_POST['user_thumbnail_url'])) {
 					$edit_response_query = mysqli_query($conn, 'UPDATE response SET image_url = "' . $_POST['user_image_url'] . '", thumbnail_url = "' . $_POST['user_thumbnail_url'] . '" WHERE resource_id = "' . $question_id . '" AND user_id = "' . $_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . '"');

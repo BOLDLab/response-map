@@ -20,7 +20,13 @@
 			$vote_resp = new stdClass();
 
 			if (empty($vote_row)) {
-				$insert_vote_query = mysqli_query($conn, 'INSERT INTO feedback (response_id, user_id, vote, create_time) VALUES (' . $body->respid . ', "' . $_SESSION[$body->sourcedid]['user_id'] . '", 1, NOW())');
+				$respid = $body->respid;
+				$sourcedid = $body->sourcedid;
+
+				$query = "INSERT INTO feedback (response_id, user_id, vote, create_time) VALUES ".
+									"('$respid', '".$_SESSION[$sourcedid]['user_id']."', 1, NOW())";
+
+				$insert_vote_query = mysqli_query($conn, $query);
 
 				if (!$insert_vote_query) {
 					http_response_code(500);
@@ -46,7 +52,7 @@
 				}
 
 				$update_vote_query = mysqli_query($conn, 'UPDATE feedback SET vote = ' . $current_vote . ' WHERE response_id = ' . $body->respid . ' AND user_id = "' . $_SESSION[$body->sourcedid]['user_id'] . '"');
-				
+
 				if (!$update_vote_query) {
 					http_response_code(500);
 					echo 'Vote was not successfully updated on database';
