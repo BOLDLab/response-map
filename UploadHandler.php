@@ -1110,11 +1110,11 @@ class UploadHandler
 				$file->url = $this->get_download_url($file->name);
 				if ($this->is_valid_image_file($file_path)) {
 					$this->handle_image_file($file_path, $file);
-
+					error_log(var_export($file, TRUE));
 					if($thumb_path) {
 							$object = $bucket->putObject([
 								'Key' => "images/thumbnails/$name",
-								'Body' => fopen($file, 'rb')
+								'Body' => fopen($file->path, 'rb')
 							]);
 
 							$aws_thumb_uri = $object->getData()['@metadata']['effectiveUri'];
