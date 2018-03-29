@@ -97,6 +97,13 @@ if (isset($_POST['session_id'])) {
 	error_log("SCRD_ID: ".$_POST['lis_result_sourcedid']);
 	error_log("GOT USER ID: ");
 	error_log($_SESSION[$_POST['lis_result_sourcedid']]['user_id']);
+
+	if(empty($_SESSION[$_POST['lis_result_sourcedid']]['user_id'])) {
+			$_SESSION[$_POST['lis_result_sourcedid']]['user_id'] = $_POST['user_id'];
+			error_log("Using LTI user_id");
+			error_log($_SESSION[$_POST['lis_result_sourcedid']]['user_id']);
+	}
+
 	// Check to see if student has submitted fullname and location
 	$select_user_query = mysqli_query($conn, 'SELECT fullname, location, lat, lng FROM user WHERE user_id = "' . $_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . '"');
 	$user_row = mysqli_fetch_row($select_user_query);
