@@ -17,6 +17,7 @@ if (isset($_POST['session_id'])) {
 	$lti->require_valid(); // Returns error message if not a valid LTI request
 
 	$lis_result_sourcedid_split = explode(':', $_POST['lis_result_sourcedid']);
+	error_log(var_export($lis_result_sourcedid_split, TRUE));
 	$question_url_id = explode('-', $lis_result_sourcedid_split[1]);
 	$question_id = $question_url_id[count($question_url_id) - 1];
 
