@@ -1116,7 +1116,7 @@ class UploadHandler
 					if($thumb_path) {
 							$object = $bucket->putObject([
 								'Key' => "images/thumbnail/$name",
-								'Body' => fopen("file/thumbnail/$name", 'rb')
+								'Body' => fopen("files/thumbnail/$name", 'rb')
 							]);
 
 							$aws_thumb_uri = $object->getData()['@metadata']['effectiveUri'];
