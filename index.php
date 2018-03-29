@@ -18,9 +18,7 @@ if (isset($_POST['session_id'])) {
 
 	$lis_result_sourcedid_split = explode(':', $_POST['lis_result_sourcedid']);
 	error_log(var_export($lis_result_sourcedid_split, TRUE));
-	error_log("EMAIL? :");
-	error_log($_POST['lis_person_contact_email_primary']);
-	error_log(md5($_POST['lis_person_contact_email_primary']));
+	error_log(var_export($_POST, TRUE));
 	$question_url_id = explode('-', $lis_result_sourcedid_split[1]);
 	$question_id = $question_url_id[count($question_url_id) - 1];
 
