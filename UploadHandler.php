@@ -1112,12 +1112,12 @@ class UploadHandler
 					$this->handle_image_file($file_path, $file);
 
 					if($thumb_path) {
-							$object = $bucket->putObject([
+						/*	$object = $bucket->putObject([
 								'Key' => "images/thumbnails/$name",
 								'Body' => fopen($thumb_path, 'rb')
 							]);
 
-							$aws_thumb_uri = $object->getData()['@metadata']['effectiveUri'];
+							$aws_thumb_uri = $object->getData()['@metadata']['effectiveUri'];*/
 					}
 				}
 			} else {
@@ -1127,8 +1127,8 @@ class UploadHandler
 					$file->error = $this->get_error_message('abort');
 				}
 			}
-			$file['aws_uri'] = $aws_uri;
-			$file['aws_thumb_uri'] = $aws_thumb_uri;
+			$file->aws_uri = $aws_uri;
+			$file->aws_thumb_uri = $aws_thumb_uri;
 			$this->set_additional_file_properties($file);
 		}
 		return $file;
