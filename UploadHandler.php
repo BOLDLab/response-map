@@ -1090,7 +1090,8 @@ class UploadHandler
 						'Key' => "images/$name",
 						'Body' => fopen($uploaded_file, 'rb')
 					]);
-					//move_uploaded_file($uploaded_file, $file_path);
+
+					move_uploaded_file($uploaded_file, $file_path);
 				}
 			} else {
 				// Non-multipart uploads (PUT method support)
