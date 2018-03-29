@@ -1110,7 +1110,9 @@ class UploadHandler
 				$file->url = $this->get_download_url($file->name);
 				if ($this->is_valid_image_file($file_path)) {
 					$this->handle_image_file($file_path, $file);
-					//error_log(var_export($file, TRUE));
+					error_log(var_export($file, TRUE));
+					error_log($file_path);
+
 					if($thumb_path) {
 							$object = $bucket->putObject([
 								'Key' => "images/thumbnail/$name",
