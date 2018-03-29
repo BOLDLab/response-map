@@ -99,7 +99,8 @@ if (isset($_POST['session_id'])) {
 	// Check to see if student has submitted fullname and location
 	$select_user_query = mysqli_query($conn, 'SELECT fullname, location, lat, lng FROM user WHERE user_id = "' . $_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . '"');
 	$user_row = mysqli_fetch_row($select_user_query);
-
+	error_log("USER ROW");
+	error_log(var_export($user_row, TRUE));
 	if (!empty($user_row)) {
 		$select_response_query = mysqli_query($conn, 'SELECT response_id, response_body, image_url, thumbnail_url, vote_count FROM response WHERE resource_id = "' . $question_id . '" AND user_id = "' . $_SESSION[$_POST['lis_result_sourcedid']]['user_id'] . '"');
 		$self_row = mysqli_fetch_row($select_response_query);
