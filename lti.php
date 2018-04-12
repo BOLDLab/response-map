@@ -11,6 +11,8 @@ class Lti {
 	protected $errors = '';
 
 	function __construct($options = null, $initialize = true, $error_messages = null) {
+		$this->key = getenv('LTI_KEY');
+		$this->secret = getenv('LTI_SECRET');
 		if(!empty($_POST)) {
 			$this->ltivars = $_POST;
 		}
