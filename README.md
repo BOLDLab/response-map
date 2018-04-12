@@ -43,8 +43,6 @@ Get the host and database name from the connection string (former is host latter
 
 Set the `$allowed_origins` array to contain the allowed origins for your app.
 
-Then, you must specify and LTI key and secret in lti.php.
-
 ### Deploy to Heroku
 ```bash
 #!/bin/bash
